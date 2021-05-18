@@ -14,6 +14,7 @@ class BdCovidOpenHelper(
      * @param db The database.
      */
     override fun onCreate(db: SQLiteDatabase?) {
+        TabelaCidades(db).cria()
 
     }
 
