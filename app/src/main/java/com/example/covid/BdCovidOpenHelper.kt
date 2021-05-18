@@ -6,10 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper
 
 class BdCovidOpenHelper(
     context: Context?,
-    name: String?,
-    factory: SQLiteDatabase.CursorFactory?,
-    version: Int
-) : SQLiteOpenHelper(context, name, factory, version) {
+) : SQLiteOpenHelper(context, NOME_BASE_DADOS, null, VERSAO_BASE_DADOS) {
     /**
      * Called when the database is created for the first time. This is where the
      * creation of tables and the initial population of the tables should happen.
@@ -17,7 +14,7 @@ class BdCovidOpenHelper(
      * @param db The database.
      */
     override fun onCreate(db: SQLiteDatabase?) {
-        TODO("Not yet implemented")
+
     }
 
     /**
@@ -43,6 +40,10 @@ class BdCovidOpenHelper(
      * @param newVersion The new database version.
      */
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        TODO("Not yet implemented")
+
+    }
+    companion object{
+        const val NOME_BASE_DADOS = "Covid.db"
+        const val VERSAO_BASE_DADOS = 1
     }
 }
