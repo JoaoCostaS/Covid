@@ -1,5 +1,7 @@
 package com.example.covid
 
+import android.content.ContentValues
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.provider.BaseColumns
 
@@ -13,6 +15,22 @@ class TabelaVacinacao(db: SQLiteDatabase) {
                 CAMPO_NAOVACINADOS + "INTEGER" +
                 ")")
     }
+    fun insert(values: ContentValues): Long {
+        return db.insert(TabelaCidades.NOME_TABELA, null, values)
+    }
+
+    fun update(values: ContentValues, whereClause: String, whereArgs: Array<String>): Int {
+        return db.update(TabelaCidades.NOME_TABELA, values, whereClause, whereArgs)
+    }
+
+    fun delete(whereClause: String, whereArgs: Array<String>): Int {
+        return db.delete(TabelaCidades.NOME_TABELA, whereClause, whereArgs)
+    }
+
+    fun query(columns: Array<String>, selection: String, selectionArgs: Array<String>, groupBy: String, having: String, orderBy: String): Cursor? {
+        return db.query(TabelaCidades.NOME_TABELA, columns, selection, selectionArgs, groupBy, having, orderBy)
+    }
+
     companion object{
         const val NOME_TABELA = "vacinacao"
         const val CAMPO_VACINADOS = "vacinados"
