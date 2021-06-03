@@ -14,6 +14,7 @@ class TabelaCasos (db: SQLiteDatabase) {
                 CAMPO_INFETADOS + " INTEGER, " +
                 CAMPO_ATIVOS + " INTEGER, " +
                 CAMPO_OBITOS + " INTEGER, " +
+                CAMPO_DATA + "DATE" +
                 CAMPO_ID_CIDADES + " INTEGER NOT NULL," +
                 " FOREIGN KEY(" + CAMPO_ID_CIDADES + ") " +
                 "REFERENCES" + TabelaCidades.NOME_TABELA +
@@ -41,6 +42,7 @@ class TabelaCasos (db: SQLiteDatabase) {
         const val CAMPO_INFETADOS = "infetados"
         const val CAMPO_ATIVOS = "ativos"
         const val CAMPO_OBITOS = "obitos"
+        const val CAMPO_DATA = "data"
         const val CAMPO_ID_CIDADES = "id_cidades"
     }
 
