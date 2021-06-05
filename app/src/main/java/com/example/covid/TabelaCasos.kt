@@ -9,15 +9,15 @@ class TabelaCasos (db: SQLiteDatabase) {
     private val db: SQLiteDatabase = db
 
     fun cria() {
-        db.execSQL("CREATE TABLE" + NOME_TABELA + " (" +
+        db.execSQL(" CREATE TABLE " + NOME_TABELA + " (" +
                 BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 CAMPO_INFETADOS + " INTEGER, " +
                 CAMPO_ATIVOS + " INTEGER, " +
                 CAMPO_OBITOS + " INTEGER, " +
-                CAMPO_DATA + "DATE" +
+                CAMPO_DATA + " INTEGER NOT NULL, " +
                 CAMPO_ID_CIDADES + " INTEGER NOT NULL," +
                 " FOREIGN KEY(" + CAMPO_ID_CIDADES + ") " +
-                "REFERENCES" + TabelaCidades.NOME_TABELA +
+                " REFERENCES " + TabelaCidades.NOME_TABELA +
                 ")")
     }
 

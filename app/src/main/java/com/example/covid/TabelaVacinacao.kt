@@ -9,10 +9,14 @@ class TabelaVacinacao(db: SQLiteDatabase) {
     private val db: SQLiteDatabase = db
 
     fun cria() {
-        db.execSQL("CREATE TABLE " + NOME_TABELA + "(" +
-                BaseColumns._ID + "INTEGER PRIMARY KEY AUTOINCREMENT," +
-                CAMPO_VACINADOS + "INTEGER, " +
-                CAMPO_NAOVACINADOS + "INTEGER" +
+        db.execSQL(" CREATE TABLE " + NOME_TABELA + "(" +
+                BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                CAMPO_VACINADOS + " INTEGER, " +
+                CAMPO_NAOVACINADOS + " INTEGER " +
+                CAMPO_DATA + "DATE" +
+                CAMPO_ID_CIDADES + " INTEGER NOT NULL," +
+                " FOREIGN KEY(" + CAMPO_ID_CIDADES + ") " +
+                "REFERENCES" + TabelaCidades.NOME_TABELA +
                 ")")
     }
     fun insert(values: ContentValues): Long {
@@ -35,5 +39,7 @@ class TabelaVacinacao(db: SQLiteDatabase) {
         const val NOME_TABELA = "vacinacao"
         const val CAMPO_VACINADOS = "vacinados"
         const val CAMPO_NAOVACINADOS = "naovacinados"
+        const val CAMPO_DATA = "data"
+        const val CAMPO_ID_CIDADES = "id_cidades"
     }
 }

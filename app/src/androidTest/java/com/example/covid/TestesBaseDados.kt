@@ -1,4 +1,4 @@
-package com.example.covid
+    package com.example.covid
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -14,11 +14,14 @@ import org.junit.Assert.*
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 @RunWith(AndroidJUnit4::class)
-class ExampleInstrumentedTest {
+class TestesBaseDados {
+    private fun getAppContext() = InstrumentationRegistry.getInstrumentation().targetContext
+
     @Test
-    fun useAppContext() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.example.covid", appContext.packageName)
+    fun consegueAbrirBaseDados(){
+        val OpenHelper = BdCovidOpenHelper(getAppContext())
+        val db = OpenHelper.readableDatabase
+        assert(db.isOpen)
+        db.close()
     }
 }
