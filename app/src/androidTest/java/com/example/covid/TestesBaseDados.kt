@@ -7,8 +7,9 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 import org.junit.Assert.*
+import org.junit.Before
 
-/**
+    /**
  * Instrumented test, which will execute on an Android device.
  *
  * See [testing documentation](http://d.android.com/tools/testing).
@@ -16,12 +17,26 @@ import org.junit.Assert.*
 @RunWith(AndroidJUnit4::class)
 class TestesBaseDados {
     private fun getAppContext() = InstrumentationRegistry.getInstrumentation().targetContext
+    private fun getBdCovidOpenHelper() = BdCovidOpenHelper(getAppContext())
 
+
+    @Before
+    fun apagaBaseDados(){
+        getAppContext().deleteDatabase(BdCovidOpenHelper.NOME_BASE_DADOS)
+    }
     @Test
     fun consegueAbrirBaseDados(){
-        val OpenHelper = BdCovidOpenHelper(getAppContext())
-        val db = OpenHelper.readableDatabase
+        val db = getBdCovidOpenHelper().readableDatabase
         assert(db.isOpen)
         db.close()
     }
-}
+        @Test
+        fun consegueInserirCasos(){
+            val db = getBdCovidOpenHelper().writableDatabase
+            val tabelaCasos = TabelaCasos(db)
+
+            tabelaCasos
+
+            db.close()
+        }
+    }

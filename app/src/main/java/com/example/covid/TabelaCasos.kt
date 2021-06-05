@@ -9,7 +9,7 @@ class TabelaCasos (db: SQLiteDatabase) {
     private val db: SQLiteDatabase = db
 
     fun cria() {
-        db.execSQL(" CREATE TABLE " + NOME_TABELA + " (" +
+        db.execSQL(" CREATE TABLE " + NOME_TABELA + " (" +  //verificar se é preciso colocar o $
                 BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 CAMPO_INFETADOS + " INTEGER, " +
                 CAMPO_ATIVOS + " INTEGER, " +

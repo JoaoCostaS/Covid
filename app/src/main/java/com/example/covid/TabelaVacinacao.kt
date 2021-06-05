@@ -12,11 +12,11 @@ class TabelaVacinacao(db: SQLiteDatabase) {
         db.execSQL(" CREATE TABLE " + NOME_TABELA + "(" +
                 BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 CAMPO_VACINADOS + " INTEGER, " +
-                CAMPO_NAOVACINADOS + " INTEGER " +
-                CAMPO_DATA + "DATE" +
-                CAMPO_ID_CIDADES + " INTEGER NOT NULL," +
-                " FOREIGN KEY(" + CAMPO_ID_CIDADES + ") " +
-                "REFERENCES" + TabelaCidades.NOME_TABELA +
+                CAMPO_NAOVACINADOS + " INTEGER, " +
+                CAMPO_DATA + " INTEGER NOT NULL, " +
+                CAMPO_ID_CIDADES + " LONG NOT NULL," +
+                " FOREIGN KEY( " + CAMPO_ID_CIDADES + ") " +
+                " REFERENCES " + TabelaCidades.NOME_TABELA +
                 ")")
     }
     fun insert(values: ContentValues): Long {
