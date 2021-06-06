@@ -6,7 +6,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.Test
 import org.junit.runner.RunWith
 
-import org.junit.Assert.*
 import org.junit.Before
 
     /**
@@ -30,13 +29,16 @@ class TestesBaseDados {
         assert(db.isOpen)
         db.close()
     }
-        @Test
-        fun consegueInserirCasos(){
-            val db = getBdCovidOpenHelper().writableDatabase
-            val tabelaCasos = TabelaCasos(db)
+    @Test
+    fun consegueInserirCidades(){
+        val db = getBdCovidOpenHelper().writableDatabase
+        val TabelaCidades = TabelaCidades(db)
 
-            tabelaCasos
+        TabelaCidades.insert(Cidades(nome = "Lisboa"))
 
-            db.close()
-        }
+
+        db.close()
+
+
     }
+}
