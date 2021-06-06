@@ -2,6 +2,7 @@
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import org.junit.Assert
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -34,8 +35,9 @@ class TestesBaseDados {
         val db = getBdCovidOpenHelper().writableDatabase
         val TabelaCidades = TabelaCidades(db)
 
-        TabelaCidades.insert(Cidades(nome = "Lisboa"))
+        val id = TabelaCidades.insert(Cidades(nome = "Lisboa").toContentValues())
 
+        Assert.assertNotEquals(-1, id)
 
         db.close()
 
